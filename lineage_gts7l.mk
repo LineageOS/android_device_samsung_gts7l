@@ -21,13 +21,11 @@ PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SM-T875
 PRODUCT_CHARACTERISTICS := tablet
 
-PRODUCT_SYSTEM_NAME := gts7lxx
-
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
 
 # Use the latest approved GMS identifiers
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="gts7lxx-user 11 RP1A.200720.012 T875XXS8DXH1 release-keys" \
-    TARGET_PRODUCT=gts7lxx
-
-BUILD_FINGERPRINT := "samsung/gts7lxx/gts7l:11/RP1A.200720.012/T875XXS8DXH1:user/release-keys"
+    BuildDesc="gts7lxx-user 11 RP1A.200720.012 T875XXS8DXH1 release-keys" \
+    BuildFingerprint=samsung/gts7lxx/gts7l:11/RP1A.200720.012/T875XXS8DXH1:user/release-keys \
+    DeviceProduct=gts7lxxx \
+    SystemName=gts7lxxx
