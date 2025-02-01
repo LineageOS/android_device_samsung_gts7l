@@ -137,14 +137,6 @@ on post-fs-data
     chown system audio /sys/class/audio/amp/excursion_max_3
     chown system audio /sys/class/audio/amp/excursion_overcount_3
 
-# SSU (Samsung SIM Unlock)
-on property:ro.boot.carrierid=TMB
-    setprop ssu.support 1
-on property:ro.boot.carrierid=TMK
-    setprop ssu.support 1
-on property:ro.boot.carrierid=VZW
-    setprop ssu.support 1
-
 on init
     # setup cgroup freezer for freecess
     mkdir /dev/freezer
@@ -190,6 +182,10 @@ on boot
     # SSWAP
     write /proc/sys/vm/swappiness 130
 
+    # Performance
+    chmod 0664 /dev/cpuset/restricted/cpus
+    write /dev/cpuset/restricted/cpus 0-7
+
     # SDHMS Slowdown : Cpuset
     mkdir /dev/cpuset/abnormal
     write /dev/cpuset/abnormal/cpus 0-3
@@ -221,3 +217,17 @@ service pageboostd /system/bin/pageboostd
     group system mount radio net_bt sdcard_rw shell media media_rw
     socket pageboostd seqpacket 0660 system system
     disabled
+
+# some priv-apps of SPR bind mount to TMB priv-apps
+on post-fs-data && property:ro.csc.sales_code=TMB
+    umount /system/carrier
+    mkdir /mnt/temp
+    mount none /system/carrier/SPR /mnt/temp bind
+    mount none /system/carrier/TMB /system/carrier bind
+    mount none /mnt/temp/priv-app/MobileID /system/carrier/priv-app/MobileID bind
+    mount none /mnt/temp/priv-app/CarrierDeviceManager /system/carrier/priv-app/CarrierDeviceManager bind
+    mount none /mnt/temp/priv-app/MobileInstaller /system/carrier/priv-app/MobileInstaller bind
+    mount none /mnt/temp/priv-app/SprintAndroidExtension2 /system/carrier/priv-app/SprintAndroidExtension2 bind
+    mount none /mnt/temp/priv-app/SprintHub /system/carrier/priv-app/SprintHub bind
+    umount /mnt/temp
+    rmdir /mnt/temp
