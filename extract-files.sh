@@ -14,7 +14,7 @@ fi
 
 set -e
 
-export DEVICE=gts7lwifi
+export DEVICE=gts7l
 export DEVICE_COMMON=sm8250-common
 export VENDOR=samsung
 export VENDOR_COMMON=${VENDOR}

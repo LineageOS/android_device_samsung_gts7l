@@ -13,13 +13,13 @@ BOARD_SUPER_PARTITION_SIZE := 10171187200
 # Inherit from sm8250-commmon
 include device/samsung/sm8250-common/BoardConfigCommon.mk
 
-DEVICE_PATH := device/samsung/gts7lwifi
+DEVICE_PATH := device/samsung/gts7l
 
 # Display
 TARGET_SCREEN_DENSITY := 320
 
 # Kernel
-TARGET_KERNEL_CONFIG += vendor/samsung/gts7lwifi.config
+TARGET_KERNEL_CONFIG += vendor/samsung/gts7l.config
 
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop

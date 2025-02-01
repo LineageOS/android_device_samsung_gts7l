@@ -5,6 +5,3 @@ ro.audio.monitorRotation=true
 
 # Bluetooth
 bluetooth.device.default_name=Galaxy Tab S7
-
-# Radio
-ro.carrier=wifi-only

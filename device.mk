@@ -19,12 +19,9 @@ PRODUCT_COPY_FILES += \
 TARGET_SCREEN_HEIGHT := 1600
 TARGET_SCREEN_WIDTH := 2560
 
-# GMS
-WITH_GMS_COMMS_SUITE := false
-
 # Init files
 PRODUCT_PACKAGES += \
-    init.gts7lwifi.rc
+    init.gts7l.rc
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
@@ -39,4 +36,4 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
 # Inherit from vendor blobs
-$(call inherit-product-if-exists, vendor/samsung/gts7lwifi/gts7lwifi-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/gts7l/gts7l-vendor.mk)
